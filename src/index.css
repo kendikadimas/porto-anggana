@@ -1,0 +1,400 @@
+@import url('https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --color-navy: #0a0a0a;
+  /* Deep Black */
+  --color-navy-light: #171717;
+  /* Dark Grey */
+  --color-navy-accent: #262626;
+
+  --color-white: #ffffff;
+  --color-gray-50: #fafafa;
+  --color-gray-100: #f4f4f5;
+  --color-gray-200: #e4e4e7;
+  --color-gray-300: #d4d4d8;
+
+  --color-primary: #18181b;
+  /* Zinc 900 - Minimalist Primary is Black */
+  --color-primary-light: #27272a;
+
+  --color-accent: #3b82f6;
+  /* Subtle Blue Accent for interactive elements */
+
+  --gradient-main: linear-gradient(to bottom, #0a0a0a, #171717);
+  --gradient-subtle: linear-gradient(to bottom right, #fafafa, #ffffff);
+
+  --text-main: #18181b;
+  --text-muted: #71717a;
+  --text-light: #f4f4f5;
+
+  --font-display: 'Clash Display', sans-serif;
+  --font-main: 'Inter', sans-serif;
+
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 3rem;
+  --spacing-xl: 6rem;
+  --spacing-section: 10rem;
+  /* Elegant spacing */
+
+  --radius-sm: 0.25rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1.5rem;
+  --radius-full: 9999px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-display);
+  background-color: var(--color-white);
+  color: var(--text-main);
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-display);
+  color: var(--color-navy);
+  font-weight: 600;
+  line-height: 1.1;
+  margin-bottom: var(--spacing-md);
+  letter-spacing: -0.02em;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.3s ease;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+  border-radius: var(--radius-md);
+}
+
+/* Utilities */
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+/* Section Spacing */
+.section {
+  padding: var(--spacing-section) 0;
+  position: relative;
+}
+
+/* Typography Refinement */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-display);
+  color: var(--text-main);
+  font-weight: 500;
+  /* Lighter weights are more elegant */
+  line-height: 1.1;
+  margin-bottom: var(--spacing-lg);
+  letter-spacing: -0.03em;
+}
+
+p {
+  line-height: 1.75;
+  /* Improved readability */
+  margin-bottom: 1.5rem;
+}
+
+/* Button Refinement */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 2.5rem;
+  border-radius: var(--radius-full);
+  font-weight: 500;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  cursor: pointer;
+  border: 1px solid transparent;
+  font-family: var(--font-main);
+  font-size: 0.95rem;
+  letter-spacing: 0.01em;
+}
+
+.btn-primary {
+  background: var(--color-primary);
+  color: var(--color-white);
+  border-color: var(--color-primary);
+}
+
+.btn-primary:hover {
+  background: transparent;
+  color: var(--color-primary);
+  transform: translateY(-2px);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--text-main);
+  border-color: var(--color-gray-200);
+}
+
+.btn-outline:hover {
+  border-color: var(--text-main);
+  background: var(--text-main);
+  color: var(--color-white);
+}
+
+.text-gradient {
+  /* Minimalist "Gradient" is just emphasized color or subtle shift */
+  color: var(--text-main);
+  position: relative;
+  display: inline-block;
+}
+
+.text-gradient::after {
+  content: '';
+  position: absolute;
+  bottom: 0px;
+  left: 0;
+  width: 100%;
+  height: 0.2em;
+  background: var(--color-gray-100);
+  z-index: -1;
+  transform: skewX(-10deg);
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.glass-dark {
+  background: rgba(10, 10, 10, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--color-white);
+}
+
+.card-hover {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Navbar Responsive */
+.desktop-menu {
+  display: none !important;
+}
+
+.mobile-toggle {
+  display: block;
+}
+
+@media (min-width: 1024px) {
+  .desktop-menu {
+    display: flex !important;
+  }
+
+  .mobile-toggle {
+    display: none;
+  }
+}
+
+/* Animations */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Expertise Section */
+.expertise-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .expertise-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+
+/* Hero Visual */
+.hero-visual {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.hero-visual::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(15, 23, 42, 0.3) 0%, rgba(15, 23, 42, 0.8) 100%);
+  backdrop-filter: blur(2px);
+}
+
+.hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Image Card for Expertise */
+.image-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 24px;
+  isolation: isolate;
+  min-height: 400px;
+  /* Taller for better visual */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.image-card-bg {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  transition: transform 0.7s ease;
+}
+
+.image-card-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: scale 0.7s ease;
+}
+
+.image-card:hover .image-card-bg img {
+  transform: scale(1.1);
+}
+
+.image-card-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 2rem;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%);
+  color: white;
+  z-index: 2;
+  transition: all 0.3s ease;
+}
+
+.image-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.2);
+  transition: background 0.3s ease;
+  z-index: -1;
+}
+
+.image-card:hover .image-card-overlay {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.service-card {
+  position: relative;
+  /* Ensure z-index handling for popup */
+  z-index: 1;
+}
+
+.service-card:hover {
+  z-index: 10;
+  /* Bring to front on hover */
+}
+
+/* Refined Popup */
+.service-popup {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -40%) scale(0.9);
+  width: 95%;
+  height: 90%;
+  background: rgba(15, 23, 42, 0.95);
+  /* Dark background for popup */
+  backdrop-filter: blur(16px);
+  padding: 1.5rem;
+  border-radius: 20px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+}
+
+.service-card:hover .service-popup {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.popup-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.popup-gallery img {
+  width: 100%;
+  height: 100%;
+  min-height: 150px;
+  object-fit: cover;
+  border-radius: 12px;
+  transition: transform 0.3s ease;
+}
+
+.popup-gallery img:hover {
+  transform: scale(1.02);
+  z-index: 2;
+}
