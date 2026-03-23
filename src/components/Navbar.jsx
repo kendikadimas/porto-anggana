@@ -2,11 +2,13 @@ import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useContent } from '../context/ContentContext';
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [activeDropdown, setActiveDropdown] = useState(null);
     const location = useLocation();
+    const { t } = useContent();
 
     const toggleMenu = () => setIsOpen(!isOpen);
 
@@ -27,52 +29,44 @@ const Navbar = () => {
     };
 
     const menuItems = [
-        { label: 'Home', path: '/' },
+        { label: t('nav.home'), path: '/' },
+        { label: t('nav.gallery'), path: '/gallery' },
         {
-            label: 'Photo Portofolio',
+            label: t('nav.photo'),
             children: [
-                { label: 'Yearbook', path: '/photo/yearbook' },
-                { label: 'Studio', path: '/photo/studio' },
-                { label: 'Dokumentasi', path: '/photo/dokumentasi' }
+                { label: t('nav.yearbook'), path: '/photo/yearbook' },
+                { label: t('nav.studio'), path: '/photo/studio' },
+                { label: t('nav.documentation'), path: '/photo/dokumentasi' }
             ]
         },
         {
-            label: 'Video Portofolio',
+            label: t('nav.video'),
             children: [
-                { label: 'Video Dokumentasi', path: '/video/dokumentasi' },
-                { label: 'Video Reels', path: '/video/reels' },
-                { label: 'Wedding Content Creator', path: '/video/wedding' },
-                { label: 'Short Movie', path: '/video/short-movie' }
+                { label: t('nav.videoDocumentation'), path: '/video/dokumentasi' },
+                { label: t('nav.videoReels'), path: '/video/reels' },
+                { label: t('nav.shortMovie'), path: '/video/short-movie' }
             ]
         },
         {
-            label: 'Visual Portofolio',
+            label: t('nav.visual'),
             children: [
-                { label: 'Design', path: '/visual/design' },
-                { label: 'Animasi Videotron', path: '/visual/videotron' }
+                { label: t('nav.design'), path: '/visual/design' },
+                { label: t('nav.videotron'), path: '/visual/videotron' }
             ]
         },
-        {
-            label: 'Website Portofolio',
-            children: [
-                { label: 'Penjelasan Singkat', path: '/website/info' },
-                { label: 'Portofolio Website', path: '/website/portfolio' },
-                { label: 'Paket yang ditawarkan', path: '/website/packages' }
-            ]
-        },
-        { label: 'About', path: '/about' }
+        { label: t('nav.website'), path: '/website' },
+        { label: t('nav.about'), path: '/about' }
     ];
 
     return (
         <nav className="navbar" style={{ backgroundColor: 'var(--color-navy)', color: 'var(--color-white)', position: 'sticky', top: 0, zIndex: 1000, boxShadow: '0 2px 10px rgba(0,0,0,0.1)' }}>
             <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', height: '80px' }}>
-                <Link to="/" className="logo" style={{ fontSize: '1.5rem', fontWeight: 'bold', color: 'var(--color-white)' }}>
+                <Link to="/" className="logo" style={{ fontSize: '1.2rem', fontWeight: 'bold', color: 'var(--color-white)' }}>
                     ANGGANA PROJECT
                 </Link>
 
-
                 {/* Desktop Menu */}
-                <div className="desktop-menu" style={{ gap: '2rem', alignItems: 'center' }}>
+                <div className="desktop-menu" style={{ gap: '1.5rem', alignItems: 'center', display: 'flex' }}>
                     {menuItems.map((item) => (
                         <div
                             key={item.label}
@@ -81,12 +75,12 @@ const Navbar = () => {
                             onMouseLeave={handleDropdownLeave}
                         >
                             {item.children ? (
-                                <div style={{ display: 'flex', alignItems: 'center', cursor: 'pointer', gap: '4px' }}>
+                                <div style={{ display: 'flex', alignItems: 'center', cursor: 'pointer', gap: '4px', fontSize: '0.9rem' }}>
                                     <span>{item.label}</span>
-                                    <ChevronDown size={16} />
+                                    <ChevronDown size={14} />
                                 </div>
                             ) : (
-                                <Link to={item.path} style={{ color: location.pathname === item.path ? '#64ffda' : 'inherit' }}>
+                                <Link to={item.path} style={{ fontSize: '0.9rem', color: location.pathname === item.path ? '#64ffda' : 'inherit' }}>
                                     {item.label}
                                 </Link>
                             )}
@@ -104,9 +98,9 @@ const Navbar = () => {
                                             left: 0,
                                             backgroundColor: 'var(--color-white)',
                                             color: 'var(--color-navy)',
-                                            minWidth: '200px',
+                                            minWidth: '220px',
                                             borderRadius: '4px',
-                                            boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
+                                            boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)',
                                             padding: '0.5rem 0',
                                         }}
                                     >
@@ -114,7 +108,7 @@ const Navbar = () => {
                                             <Link
                                                 key={child.label}
                                                 to={child.path}
-                                                style={{ display: 'block', padding: '0.5rem 1rem', textDecoration: 'none', color: 'var(--color-navy)', transition: 'background 0.2s' }}
+                                                style={{ display: 'block', padding: '0.75rem 1.25rem', textDecoration: 'none', color: 'var(--color-navy)', fontSize: '0.85rem', transition: 'background 0.2s' }}
                                                 onMouseEnter={(e) => e.target.style.backgroundColor = 'var(--color-gray-100)'}
                                                 onMouseLeave={(e) => e.target.style.backgroundColor = 'transparent'}
                                             >
@@ -147,12 +141,12 @@ const Navbar = () => {
                     >
                         <div className="container" style={{ padding: '1rem' }}>
                             {menuItems.map((item) => (
-                                <div key={item.label} style={{ marginBottom: '1rem' }}>
+                                <div key={item.label} style={{ marginBottom: '0.5rem' }}>
                                     {item.children ? (
                                         <div>
                                             <div
                                                 onClick={() => toggleDropdownMobile(item.label)}
-                                                style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', cursor: 'pointer', padding: '0.5rem 0' }}
+                                                style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', cursor: 'pointer', padding: '0.75rem 0' }}
                                             >
                                                 <span style={{ fontWeight: '500' }}>{item.label}</span>
                                                 <ChevronDown
@@ -173,7 +167,7 @@ const Navbar = () => {
                                                                 key={child.label}
                                                                 to={child.path}
                                                                 onClick={toggleMenu}
-                                                                style={{ display: 'block', padding: '0.5rem 0', fontSize: '0.9rem', color: 'rgba(255,255,255,0.8)' }}
+                                                                style={{ display: 'block', padding: '0.6rem 0', fontSize: '0.85rem', color: 'rgba(255,255,255,0.8)' }}
                                                             >
                                                                 {child.label}
                                                             </Link>
@@ -186,7 +180,7 @@ const Navbar = () => {
                                         <Link
                                             to={item.path}
                                             onClick={toggleMenu}
-                                            style={{ display: 'block', padding: '0.5rem 0', fontWeight: '500' }}
+                                            style={{ display: 'block', padding: '0.75rem 0', fontWeight: '500' }}
                                         >
                                             {item.label}
                                         </Link>

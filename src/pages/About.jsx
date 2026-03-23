@@ -1,13 +1,16 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Users, Award, Coffee, Heart } from 'lucide-react';
+import { useContent } from '../context/ContentContext';
 
 const About = () => {
+    const { t } = useContent();
+
     const stats = [
-        { label: 'Happy Clients', value: '200+', icon: <Users /> },
-        { label: 'Projects Done', value: '500+', icon: <Award /> },
-        { label: 'Years Experience', value: '8+', icon: <Coffee /> },
-        { label: 'Team Members', value: '12', icon: <Heart /> },
+        { label: t('about.stats.clients'), value: '200+', icon: <Users /> },
+        { label: t('about.stats.projects'), value: '500+', icon: <Award /> },
+        { label: t('about.stats.years'), value: '8+', icon: <Coffee /> },
+        { label: t('about.stats.team'), value: '12', icon: <Heart /> },
     ];
 
     return (
@@ -22,14 +25,14 @@ const About = () => {
                             transition={{ duration: 0.8 }}
                         >
                             <h1 style={{ fontSize: 'clamp(3rem, 6vw, 4.5rem)', marginBottom: '2rem' }}>
-                                We are <span className="text-gradient">Anggana Project</span>
+                                {t('about.title')} <span className="text-gradient">Anggana Project</span>
                             </h1>
                             <div style={{ padding: '0', borderLeft: '1px solid var(--color-navy)', paddingLeft: '2rem' }}>
                                 <p style={{ fontSize: '1.5rem', lineHeight: '1.6', marginBottom: '2rem', color: 'var(--text-main)', fontWeight: '400' }}>
-                                    A creative collective dedicated to capturing life's most precious moments and building meaningful digital experiences.
+                                    {t('about.intro1')}
                                 </p>
                                 <p style={{ color: 'var(--text-muted)', lineHeight: '1.8', fontSize: '1.1rem' }}>
-                                    Founded on the principles of quality and creativity, we have grown from a small photography studio into a full-service creative agency. We believe in the power of visual storytelling to connect people and brands.
+                                    {t('about.intro2')}
                                 </p>
                             </div>
                         </motion.div>
@@ -77,9 +80,9 @@ const About = () => {
             <div className="section" style={{ backgroundColor: 'var(--color-navy)', color: 'var(--color-white)', marginTop: '2rem' }}>
                 <div className="container">
                     <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
-                        <h2 style={{ color: 'white', marginBottom: '1rem', fontSize: '3rem' }}>Our Impact</h2>
+                        <h2 style={{ color: 'white', marginBottom: '1rem', fontSize: '3rem' }}>{t('about.impact.title')}</h2>
                         <p style={{ color: 'var(--color-gray-200)', maxWidth: '600px', margin: '0 auto', fontSize: '1.1rem' }}>
-                            We take pride in every project we touch, ensuring excellence and creativity in every detail.
+                            {t('about.impact.desc')}
                         </p>
                     </div>
 
@@ -100,11 +103,11 @@ const About = () => {
             {/* CTA */}
             <div className="section">
                 <div className="container text-center">
-                    <h2 style={{ fontSize: '2.5rem', marginBottom: '2rem' }}>Ready to create something amazing?</h2>
+                    <h2 style={{ fontSize: '2.5rem', marginBottom: '2rem' }}>{t('about.cta.title')}</h2>
                     <p style={{ maxWidth: '600px', margin: '0 auto 2rem auto', color: 'var(--text-muted)' }}>
-                        Let's discuss how we can bring your vision to life.
+                        {t('about.cta.desc')}
                     </p>
-                    <button className="btn btn-primary">Connect With Us</button>
+                    <button className="btn btn-primary">{t('about.cta.button')}</button>
                 </div>
             </div>
         </div>
